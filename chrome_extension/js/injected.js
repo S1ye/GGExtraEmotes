@@ -12,7 +12,7 @@
 		});
 		eval(main_script_body);
 	}
-	catch(e) { console.log(e); }
+	catch(err) { console.log(err); }
 })();
 
 async function Get({url, from_cache, max_attempts, retry_ms, timeout_ms} = {})
@@ -34,9 +34,9 @@ async function Get({url, from_cache, max_attempts, retry_ms, timeout_ms} = {})
 					timeout_ms: timeout_ms
 				}));
 			}
-			catch(e)
+			catch(err)
 			{
-				console.log(e);
+				console.log(err);
 				if (attempts_used >= max_attempts)
 				{
 					return reject(new Error("[GGExtraEmotes] Maximum number of attempts reached in Get('" + url + ", " + from_cache + ", " + max_attempts + ", " + retry_ms + ", " + timeout_ms + ")"));
