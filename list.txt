@@ -13,6 +13,7 @@ YourBunnyDance.gif
 niatepDance.gif
 niatepKiss.gif
 niatepLuv.gif
+niaAFK.png
 niatepEyes.gif
 ResidentSleeper.png
 Prayge.png
