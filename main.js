@@ -268,7 +268,16 @@
 	function Replace(str, a, b)
 	{
 		var new_str = CopyStrByValue(str);
-		while (new_str.indexOf(a) > -1) { new_str = new_str.replace(a, b); }
+		var replaces = 0;
+		while (new_str.indexOf(a) > -1)
+		{
+			new_str = new_str.replace(a, b);
+			replaces++;
+			if (replaces > 1000)
+			{
+				throw new Error("[GGExtraEmotes] InfinityReplaces in Replace('" + str + "', '" + a + "', '" + b + "')");
+			}
+		}
 		return new_str;
 	}
 
