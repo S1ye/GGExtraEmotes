@@ -88,6 +88,11 @@
 			if (keyboard_event.keyCode != 13) { return; }
 			keyboard_event.preventDefault();
 			const text = ReplaceHTMLWithText(ggextraemotes_msg_input.innerHTML);
+			if (text.indexOf("<") > -1 && text.indexOf(">") > -1)
+			{
+				alert("В отправленном сообщении обнаружены символы '<' и '>', это может означать, что сообщение содержит html-код. Пожалуйста, уберите их из сообщения. Если вы их не писали, то это означает, что расширение сломалось. Отключите расширение GGExtraEmotes и перезагрузите страницу.");
+				return false;
+			}
 			SendMessage(text);
 			return false;
 
@@ -99,6 +104,8 @@
 				text = Replace(text, "</div>", "");
 				text = Replace(text, "<br>", "");
 				text = Replace(text, "&nbsp;", " ");
+				text = Replace(text, "&lt;", "<");
+				text = Replace(text, "&gt;", ">");
 				text = Replace(text, "\n", "");
 				text = Replace(text, "\r", "");
 				text = Replace(text, "\t", "");
